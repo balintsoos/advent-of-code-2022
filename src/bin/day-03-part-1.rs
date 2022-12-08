@@ -22,7 +22,7 @@ fn get_char_as_integer(char: char) -> u16 {
 
 fn main() {
     let mut result: u16 = 0;
-    
+
     if let Ok(lines) = read_lines() {
         for line in lines {
             if let Ok(chars) = line {
