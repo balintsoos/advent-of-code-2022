@@ -2,6 +2,10 @@ use std::fs::File;
 use std::io::{self, BufRead};
 
 fn main() {
+    println!("{}", solve());
+}
+
+fn solve() -> u16 {
     let mut result: u16 = 0;
 
     if let Ok(lines) = read_lines() {
@@ -17,8 +21,7 @@ fn main() {
         }
     }
 
-    println!("Actual:\t\t{}", result);
-    println!("Expected:\t907");
+    result
 }
 
 fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
@@ -32,4 +35,9 @@ fn is_overlap(a: Vec<&str>, b: Vec<&str>) -> bool {
 
 fn to_u8(s: &str) -> u8 {
     s.parse::<u8>().unwrap()
+}
+
+#[test]
+fn test() {
+    assert_eq!(solve(), 907);
 }
