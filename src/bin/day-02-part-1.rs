@@ -5,6 +5,11 @@ fn main() {
     println!("{}", solve());
 }
 
+#[test]
+fn test() {
+    assert_eq!(solve(), 12156)
+}
+
 fn solve() -> u16 {
     let mut result: u16 = 0;
 
@@ -38,9 +43,4 @@ fn get_point(opponent_pick: &str, your_pick: &str) -> u16 {
         ("C", "Z") => 3 + 3,
         (&_, _) => todo!(),
     }
-}
-
-#[test]
-fn test() {
-    assert_eq!(solve(), 12156)
 }

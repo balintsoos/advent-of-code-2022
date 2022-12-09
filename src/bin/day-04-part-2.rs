@@ -5,6 +5,11 @@ fn main() {
     println!("{}", solve());
 }
 
+#[test]
+fn test() {
+    assert_eq!(solve(), 907);
+}
+
 fn solve() -> u16 {
     let mut result: u16 = 0;
 
@@ -35,9 +40,4 @@ fn is_overlap(a: Vec<&str>, b: Vec<&str>) -> bool {
 
 fn to_u8(s: &str) -> u8 {
     s.parse::<u8>().unwrap()
-}
-
-#[test]
-fn test() {
-    assert_eq!(solve(), 907);
 }

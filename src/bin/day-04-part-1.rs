@@ -5,6 +5,11 @@ fn main() {
     println!("{}", solve());
 }
 
+#[test]
+fn test() {
+    assert_eq!(solve(), 567);
+}
+
 fn solve() -> u16 {
     let mut result: u16 = 0;
 
@@ -34,9 +39,4 @@ fn is_fully_contain(assignment1: Vec<&str>, assignment2: Vec<&str>) -> bool {
         && assignment1[1].parse::<u8>().unwrap() >= assignment2[1].parse::<u8>().unwrap()
         || assignment1[0].parse::<u8>().unwrap() >= assignment2[0].parse::<u8>().unwrap()
             && assignment1[1].parse::<u8>().unwrap() <= assignment2[1].parse::<u8>().unwrap()
-}
-
-#[test]
-fn test() {
-    assert_eq!(solve(), 567);
 }

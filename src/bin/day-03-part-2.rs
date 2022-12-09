@@ -6,6 +6,11 @@ fn main() {
     println!("{}", solve());
 }
 
+#[test]
+fn test() {
+    assert_eq!(solve(), 2518)
+}
+
 fn solve() -> u16 {
     let mut result: u16 = 0;
     let mut vec: Vec<String> = Vec::new();
@@ -46,9 +51,4 @@ fn get_char_as_integer(char: char) -> u16 {
         return char_as_u16 - 96;
     }
     char_as_u16 - 38
-}
-
-#[test]
-fn test() {
-    assert_eq!(solve(), 2518)
 }
