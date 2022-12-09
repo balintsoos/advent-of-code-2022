@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::{self, BufRead};
 
 fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("input.txt")?;
+    let file = File::open("inputs/day-02.txt")?;
     Ok(io::BufReader::new(file).lines())
 }
 
@@ -22,6 +22,10 @@ fn get_point(opponent_pick: &str, your_pick: &str) -> u16 {
 }
 
 fn main() {
+    println!("{}", solve());
+}
+
+fn solve() -> u16 {
     let mut result: u16 = 0;
 
     if let Ok(lines) = read_lines() {
@@ -33,5 +37,10 @@ fn main() {
         }
     }
 
-    println!("Result: {}", result);
+    result
+}
+
+#[test]
+fn test() {
+    assert_eq!(solve(), 10835)
 }
