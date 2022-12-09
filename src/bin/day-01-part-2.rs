@@ -1,13 +1,13 @@
 use std::fs::File;
 use std::io::{self, BufRead};
 
-fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("inputs/day-01.txt")?;
-    Ok(io::BufReader::new(file).lines())
-}
-
 fn main() {
     println!("{}", solve());
+}
+
+#[test]
+fn test() {
+    assert_eq!(solve(), 195292)
 }
 
 fn solve() -> u32 {
@@ -31,7 +31,7 @@ fn solve() -> u32 {
     calories[0] + calories[1] + calories[2]
 }
 
-#[test]
-fn test() {
-    assert_eq!(solve(), 195292)
+fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
+    let file = File::open("inputs/day-01.txt")?;
+    Ok(io::BufReader::new(file).lines())
 }

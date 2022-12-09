@@ -1,16 +1,13 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-fn lines_from_file() -> Vec<String> {
-    let file = File::open("inputs/day-01.txt").expect("no such file");
-    let buf = BufReader::new(file);
-    buf.lines()
-        .map(|l| l.expect("Could not parse line"))
-        .collect()
-}
-
 fn main() {
     println!("{}", solve());
+}
+
+#[test]
+fn test() {
+    assert_eq!(solve(), 66306)
 }
 
 fn solve() -> u32 {
@@ -32,7 +29,10 @@ fn solve() -> u32 {
     max
 }
 
-#[test]
-fn test() {
-    assert_eq!(solve(), 66306)
+fn lines_from_file() -> Vec<String> {
+    let file = File::open("inputs/day-01.txt").expect("no such file");
+    let buf = BufReader::new(file);
+    buf.lines()
+        .map(|l| l.expect("Could not parse line"))
+        .collect()
 }
