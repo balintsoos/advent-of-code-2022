@@ -1,6 +1,6 @@
-use std::io::{self, BufRead};
-use std::fs::File;
 use std::collections::HashSet;
+use std::fs::File;
+use std::io::{self, BufRead};
 
 fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
     let file = File::open("input.txt")?;
@@ -10,7 +10,9 @@ fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
 fn shared_char(first: &String, second: &String, third: &String) -> Option<char> {
     let first_set: HashSet<char> = first.chars().collect();
     let second_set: HashSet<char> = second.chars().collect();
-    third.chars().find(|c| first_set.contains(&c) && second_set.contains(&c))
+    third
+        .chars()
+        .find(|c| first_set.contains(&c) && second_set.contains(&c))
 }
 
 fn get_char_as_integer(char: char) -> u16 {

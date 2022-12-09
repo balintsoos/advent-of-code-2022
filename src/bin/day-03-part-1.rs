@@ -1,6 +1,6 @@
-use std::io::{self, BufRead};
-use std::fs::File;
 use std::collections::HashSet;
+use std::fs::File;
+use std::io::{self, BufRead};
 
 fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
     let file = File::open("input.txt")?;

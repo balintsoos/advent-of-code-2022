@@ -1,5 +1,5 @@
-use std::io::{BufRead, BufReader};
 use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 fn lines_from_file() -> Vec<String> {
     let file = File::open("input.txt").expect("no such file");

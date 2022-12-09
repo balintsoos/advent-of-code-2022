@@ -1,5 +1,5 @@
-use std::io::{self, BufRead};
 use std::fs::File;
+use std::io::{self, BufRead};
 
 fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
     let file = File::open("input.txt")?;
@@ -24,5 +24,8 @@ fn main() {
     }
 
     calories.sort_by(|a, b| b.cmp(a));
-    println!("Max 3 in total: {}", calories[0] + calories[1] + calories[2]);
+    println!(
+        "Max 3 in total: {}",
+        calories[0] + calories[1] + calories[2]
+    );
 }

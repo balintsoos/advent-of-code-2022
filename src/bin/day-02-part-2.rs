@@ -1,5 +1,5 @@
-use std::io::{self, BufRead};
 use std::fs::File;
+use std::io::{self, BufRead};
 
 fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
     let file = File::open("input.txt")?;
@@ -17,7 +17,7 @@ fn get_point(opponent_pick: &str, your_pick: &str) -> u16 {
         ("C", "X") => 2 + 0,
         ("C", "Y") => 3 + 3,
         ("C", "Z") => 1 + 6,
-        (&_, _) => todo!()
+        (&_, _) => todo!(),
     }
 }
 
