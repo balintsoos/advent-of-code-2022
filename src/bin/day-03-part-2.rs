@@ -15,16 +15,14 @@ fn solve() -> u16 {
     let mut result: u16 = 0;
     let mut vec: Vec<String> = Vec::new();
 
-    if let Ok(lines) = read_lines() {
-        for line in lines {
-            if let Ok(chars) = line {
-                vec.push(chars);
-                if vec.len() == 3 {
-                    if let Some(char) = shared_char(&vec[0], &vec[1], &vec[2]) {
-                        result += get_char_as_integer(char);
-                    }
-                    vec.clear();
+    for line in read_lines() {
+        if let Ok(chars) = line {
+            vec.push(chars);
+            if vec.len() == 3 {
+                if let Some(char) = shared_char(&vec[0], &vec[1], &vec[2]) {
+                    result += get_char_as_integer(char);
                 }
+                vec.clear();
             }
         }
     }
@@ -32,9 +30,9 @@ fn solve() -> u16 {
     result
 }
 
-fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("inputs/day-03.txt")?;
-    Ok(io::BufReader::new(file).lines())
+fn read_lines() -> io::Lines<io::BufReader<File>> {
+    let file = File::open("inputs/day-03.txt").unwrap();
+    io::BufReader::new(file).lines()
 }
 
 fn shared_char(first: &String, second: &String, third: &String) -> Option<char> {

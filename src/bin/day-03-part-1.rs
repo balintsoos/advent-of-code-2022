@@ -14,13 +14,11 @@ fn test() {
 fn solve() -> u16 {
     let mut result: u16 = 0;
 
-    if let Ok(lines) = read_lines() {
-        for line in lines {
-            if let Ok(chars) = line {
-                let (left, right) = chars.split_at(chars.len() / 2);
-                if let Some(char) = shared_char(left, right) {
-                    result += get_char_as_integer(char);
-                }
+    for line in read_lines() {
+        if let Ok(chars) = line {
+            let (left, right) = chars.split_at(chars.len() / 2);
+            if let Some(char) = shared_char(left, right) {
+                result += get_char_as_integer(char);
             }
         }
     }
@@ -28,9 +26,9 @@ fn solve() -> u16 {
     result
 }
 
-fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("inputs/day-03.txt")?;
-    Ok(io::BufReader::new(file).lines())
+fn read_lines() -> io::Lines<io::BufReader<File>> {
+    let file = File::open("inputs/day-03.txt").unwrap();
+    io::BufReader::new(file).lines()
 }
 
 fn shared_char(left: &str, right: &str) -> Option<char> {

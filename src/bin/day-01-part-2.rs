@@ -14,15 +14,13 @@ fn solve() -> u32 {
     let mut calories: Vec<u32> = Vec::new();
     let mut current: u32 = 0;
 
-    if let Ok(lines) = read_lines() {
-        for line in lines {
-            if let Ok(calorie) = line {
-                if calorie.is_empty() {
-                    calories.push(current);
-                    current = 0;
-                } else {
-                    current += calorie.parse::<u32>().unwrap();
-                }
+    for line in read_lines() {
+        if let Ok(calorie) = line {
+            if calorie.is_empty() {
+                calories.push(current);
+                current = 0;
+            } else {
+                current += calorie.parse::<u32>().unwrap();
             }
         }
     }
@@ -31,7 +29,7 @@ fn solve() -> u32 {
     calories[0] + calories[1] + calories[2]
 }
 
-fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("inputs/day-01.txt")?;
-    Ok(io::BufReader::new(file).lines())
+fn read_lines() -> io::Lines<io::BufReader<File>> {
+    let file = File::open("inputs/day-01.txt").unwrap();
+    io::BufReader::new(file).lines()
 }

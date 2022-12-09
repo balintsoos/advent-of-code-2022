@@ -13,21 +13,19 @@ fn test() {
 fn solve() -> u16 {
     let mut result: u16 = 0;
 
-    if let Ok(lines) = read_lines() {
-        for line in lines {
-            if let Ok(chars) = line {
-                let vec: Vec<&str> = chars.split(" ").collect();
-                result += get_point(vec[0], vec[1]);
-            }
+    for line in read_lines() {
+        if let Ok(chars) = line {
+            let vec: Vec<&str> = chars.split(" ").collect();
+            result += get_point(vec[0], vec[1]);
         }
     }
 
     result
 }
 
-fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("inputs/day-02.txt")?;
-    Ok(io::BufReader::new(file).lines())
+fn read_lines() -> io::Lines<io::BufReader<File>> {
+    let file = File::open("inputs/day-02.txt").unwrap();
+    io::BufReader::new(file).lines()
 }
 
 fn get_point(opponent_pick: &str, your_pick: &str) -> u16 {

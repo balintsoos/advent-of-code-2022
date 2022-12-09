@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{self, BufRead};
 
 fn main() {
     println!("{}", solve());
@@ -11,28 +11,26 @@ fn test() {
 }
 
 fn solve() -> u32 {
-    let lines = lines_from_file();
-
     let mut max: u32 = 0;
     let mut current: u32 = 0;
-    for line in lines {
-        if line.is_empty() {
-            if current > max {
-                max = current;
+
+    for line in read_lines() {
+        if let Ok(chars) = line {
+            if chars.is_empty() {
+                if current > max {
+                    max = current;
+                }
+                current = 0;
+            } else {
+                current += chars.parse::<u32>().unwrap();
             }
-            current = 0;
-        } else {
-            current += line.parse::<u32>().unwrap();
         }
     }
 
     max
 }
 
-fn lines_from_file() -> Vec<String> {
-    let file = File::open("inputs/day-01.txt").expect("no such file");
-    let buf = BufReader::new(file);
-    buf.lines()
-        .map(|l| l.expect("Could not parse line"))
-        .collect()
+fn read_lines() -> io::Lines<io::BufReader<File>> {
+    let file = File::open("inputs/day-01.txt").unwrap();
+    io::BufReader::new(file).lines()
 }
