@@ -17,11 +17,12 @@ fn main() {
         }
     }
 
-    println!("Result: {}", result);
+    println!("Actual:\t\t{}", result);
+    println!("Expected:\t907");
 }
 
 fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("input.txt")?;
+    let file = File::open("inputs/day-04.txt")?;
     Ok(io::BufReader::new(file).lines())
 }
 

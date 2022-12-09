@@ -1,18 +1,6 @@
 use std::fs::File;
 use std::io::{self, BufRead};
 
-fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
-    let file = File::open("input.txt")?;
-    Ok(io::BufReader::new(file).lines())
-}
-
-fn is_fully_contain(assignment1: Vec<&str>, assignment2: Vec<&str>) -> bool {
-    assignment1[0].parse::<u8>().unwrap() <= assignment2[0].parse::<u8>().unwrap()
-        && assignment1[1].parse::<u8>().unwrap() >= assignment2[1].parse::<u8>().unwrap()
-        || assignment1[0].parse::<u8>().unwrap() >= assignment2[0].parse::<u8>().unwrap()
-            && assignment1[1].parse::<u8>().unwrap() <= assignment2[1].parse::<u8>().unwrap()
-}
-
 fn main() {
     let mut result: u16 = 0;
 
@@ -29,5 +17,18 @@ fn main() {
         }
     }
 
-    println!("Result: {}", result);
+    println!("Actual:\t\t{}", result);
+    println!("Expected:\t567");
+}
+
+fn read_lines() -> io::Result<io::Lines<io::BufReader<File>>> {
+    let file = File::open("inputs/day-04.txt")?;
+    Ok(io::BufReader::new(file).lines())
+}
+
+fn is_fully_contain(assignment1: Vec<&str>, assignment2: Vec<&str>) -> bool {
+    assignment1[0].parse::<u8>().unwrap() <= assignment2[0].parse::<u8>().unwrap()
+        && assignment1[1].parse::<u8>().unwrap() >= assignment2[1].parse::<u8>().unwrap()
+        || assignment1[0].parse::<u8>().unwrap() >= assignment2[0].parse::<u8>().unwrap()
+            && assignment1[1].parse::<u8>().unwrap() <= assignment2[1].parse::<u8>().unwrap()
 }
