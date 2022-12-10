@@ -27,7 +27,7 @@ fn solve() -> u16 {
 }
 
 fn read_lines() -> io::Lines<io::BufReader<File>> {
-    let file = File::open("inputs/day-03.txt").unwrap();
+    let file = File::open("inputs/day-03.txt").expect("No such file");
     io::BufReader::new(file).lines()
 }
 

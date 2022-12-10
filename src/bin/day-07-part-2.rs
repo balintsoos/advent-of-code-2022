@@ -48,6 +48,6 @@ fn solve() -> u64 {
 }
 
 fn read_lines() -> io::Lines<io::BufReader<File>> {
-    let file = File::open("inputs/day-07.txt").unwrap();
+    let file = File::open("inputs/day-07.txt").expect("No such file");
     io::BufReader::new(file).lines()
 }
