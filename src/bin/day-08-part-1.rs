@@ -7,7 +7,7 @@ fn main() {
 
 #[test]
 fn test() {
-    assert_eq!(solve(), 5);
+    assert_eq!(solve(), 1820);
 }
 
 fn solve() -> usize {
